@@ -21,8 +21,8 @@
                   <i class="el-icon-location"></i>
                   <span>人工智障</span>
                 </template>
-                  <el-menu-item index="1-1">websocket测试</el-menu-item>
-                  <el-menu-item index="1-2">table表格</el-menu-item>
+                  <el-menu-item index="0">websocket测试</el-menu-item>
+                  <el-menu-item index="1">table表格</el-menu-item>
                   <el-menu-item index="1-3">form表单</el-menu-item>
               </el-submenu>
               <el-submenu index="4">
@@ -48,6 +48,7 @@
 <script>
 import Head from '@/components/home/head.vue'
 import sideBar from '@/components/home/sideBar.vue'
+const routeList = [{index: 1, path: '/table/normalTable'}, {index: 0, path: '/layout/chatService'}] // 路由的list
 export default {
   name: 'HelloWorld',
   components: { Head, sideBar },
@@ -63,6 +64,12 @@ export default {
   created () {
   },
   methods: {
+    getRouteByIndex (indexs) { // 查询路由
+      let path = routeList.filter((item, index) => {
+        return Number(indexs) === Number(item.index)
+      })
+      return path[0].path
+    },
     handleOpen (key, keyPath) {
       console.log(key, keyPath)
     },
@@ -71,7 +78,9 @@ export default {
     },
     selectTab (key, keyPath) { // 选择的彩蛋
       console.log(key, keyPath)
-      this.$router.push('/layout/chatService')
+      let path = this.getRouteByIndex(key)
+      console.log('路径=' + path)
+      this.$router.push(path)
     },
     handleSetLineChartData (val) {
       console.log(val)

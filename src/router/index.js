@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import chatService from '@/components/chatService/index'
+import normalTable from '@/components/table/normalTable'
 import layout from '@/components/layout'
 Vue.use(Router)
 
@@ -25,6 +26,11 @@ export default new Router({
           path: '/layout/chatService',
           name: 'chatService',
           component: chatService
+        },
+        {
+          path: '/table/normalTable',
+          name: 'normalTable',
+          component: normalTable
         }
       ]
     }
