@@ -2,7 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import chatService from '@/components/chatService/index'
-import normalTable from '@/components/table/normalTable'
+import normalTable from '@/components/table/normalTable/normalTable'
+import treeTable from '@/components/table/treeTable/index'
+import echartsGraph from '@/components/echarts/index'
 import layout from '@/components/layout'
 Vue.use(Router)
 
@@ -31,6 +33,16 @@ export default new Router({
           path: '/table/normalTable',
           name: 'normalTable',
           component: normalTable
+        },
+        {
+          path: '/table/treeTable',
+          name: 'treeTable',
+          component: treeTable
+        },
+        {
+          path: '/echarts/index',
+          name: 'echartsGraph',
+          component: echartsGraph
         }
       ]
     }
