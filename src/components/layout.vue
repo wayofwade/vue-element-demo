@@ -8,7 +8,7 @@
       <div class="main-div">
         <div class="left-div">
             <el-menu
-              default-active="3"
+              default-active="0"
               class="el-menu-vertical-demo"
               @open="handleOpen"
               @close="handleClose"
@@ -24,6 +24,7 @@
                   <el-menu-item index="0">websocket测试</el-menu-item>
                   <el-menu-item index="1">常用table</el-menu-item>
                   <el-menu-item index="2">树形table</el-menu-item>
+                  <el-menu-item index="3">form表单</el-menu-item>
               </el-submenu>
               <el-submenu index="2">
                 <template slot="title">
@@ -61,6 +62,7 @@ const routeList = [
   {index: 1, path: '/table/normalTable'},
   {index: 0, path: '/layout/chatService'},
   {index: 2, path: '/table/treeTable'},
+  {index: 3, path: '/formData/index'},
   {index: 6, path: '/echarts/index'}
 ] // 路由的list
 export default {

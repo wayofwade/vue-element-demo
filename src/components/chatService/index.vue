@@ -148,7 +148,6 @@ export default {
 }
 </script>
 
-
 <style scoped>
   .main-div {
     width: 100%;

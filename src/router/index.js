@@ -5,6 +5,7 @@ import chatService from '@/components/chatService/index'
 import normalTable from '@/components/table/normalTable/normalTable'
 import treeTable from '@/components/table/treeTable/index'
 import echartsGraph from '@/components/echarts/index'
+import formData from '@/components/formData/index'
 import layout from '@/components/layout'
 Vue.use(Router)
 
@@ -43,6 +44,11 @@ export default new Router({
           path: '/echarts/index',
           name: 'echartsGraph',
           component: echartsGraph
+        },
+        {
+          path: '/formData/index',
+          name: 'formData',
+          component: formData
         }
       ]
     }
