@@ -67,7 +67,8 @@
           </el-input>
         </div>
         <div class='chat-foot-btn'>
-          <el-button class='sb-btn' size='mini' type='primary' @click='addChat' :disabled='ifDisable()'>发送</el-button>
+          <el-button class='sb-btn-left' size='mini' type='success' @click='addChat(0)' :disabled='ifDisable()'>左边发送</el-button>
+          <el-button class='sb-btn-right' size='mini' type='primary' @click='addChat(1)' :disabled='ifDisable()'>右边发送</el-button>
         </div>
       </div>
     </div>
@@ -98,7 +99,7 @@ export default {
   mounted () {
     setTimeout(() => {
       this.fullScreenLoading = false
-    }, 3000)
+    }, 1500)
   },
   methods: {
     buffer2obj (buffer, proto) { // proto字节流转对象，传入字节流，proto对象
@@ -123,14 +124,16 @@ export default {
     ifDisable () {
       return false
     },
-    addChat () {
+    getIfReadText (value) {
+      return value ? '已读' : '未读'
+    },
+    addChat (value) {
       this.count += 1
       let items = {
-        right: true,
+        right: value > 0,
         isRead: this.count % 2 === 0,
         text: this.inputText
       }
-      items.isRead = false // 设置未读
       this.pushMessage(items) // 往vuex插入一条消息
       this.inputText = ''
       this.initScroll()
@@ -318,11 +321,14 @@ export default {
   }
 
   .top5 {
-    margin-top: 5px
+    margin-top: 5px;
   }
 
-  .sb-btn {
-    float: right
+  .sb-btn-right {
+    float: right;
+  }
+  .sb-btn-left {
+    float: left;
   }
   .if-read-div{
     text-align: right;

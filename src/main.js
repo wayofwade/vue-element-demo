@@ -1,5 +1,7 @@
-// The Vue build version to load with the `import` command
-// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+/*
+* 这个是主文件
+* components/common/下面为通用的组件，具体使用方法在组件内有注释
+* */
 import Vue from 'vue'
 import App from './App'
 import router from './router'
@@ -9,7 +11,9 @@ import '@/styles/normalize.css' // 全局的css，改变饿了么ui最外层的�
 import '@/styles/global.scss'
 import '@/styles/collapse.scss'
 
-Vue.use(ElementUI)
+Vue.use(ElementUI, { // 配置就是用小的
+  size: 'small'
+})
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

@@ -17,6 +17,7 @@
           </el-form-item>
           <el-button type="primary" style="margin-left: 30px;" size="mini" @click="searchButton()">搜索</el-button>
           <el-button type="primary" style="margin-left: 30px;" size="mini" @click="addTables">添加</el-button>
+          <el-button style="margin-left: 30px;" icon="el-icon-message" @click="emailDialog">邮件导出</el-button>
         </el-form>
 
     <el-table id="tables"
@@ -110,14 +111,18 @@
         </el-pagination>
       </div>
     </div>
+    <to-email :ifTimeRange="false" :ifShowTime="true" :toEmailVisible="toEmailDialog"
+              @close="closeEmailDialog" @save="sendEmail"></to-email>
   </div>
 </template>
 
 <script>
+import toEmail from '@/components/common/toEmail/toEmailWithTime.vue'
 export default {
-  components: {},
+  components: { toEmail },
   data () {
     return {
+      toEmailDialog: false,
       searchForm: { // 搜索条件的
         id: '',
         status: '',
@@ -145,10 +150,29 @@ export default {
   },
   created () {
     this.$emit('fromRouteName', this.$route.name)
-    this.getFileList() // 得到文件列表以及总数
   },
   methods: {
+    emailDialog () {
+      this.toEmailDialog = true
+    },
+    sendEmail (value) { // 打印邮件信息
+      console.log('打印的就是弹窗里的信息')
+      console.log(value)
+      this.toEmailDialog = false
+      this.$message({
+        message: '发送成功',
+        type: 'success',
+        showClose: true,
+        duration: '2000'
+      })
+    },
+    closeEmailDialog () {
+      this.toEmailDialog = false
+    },
     searchButton () {
+    },
+    changeStatus (val) {
+      console.log(val)
     },
     handleCurrentChange (val) { // 翻页的时候==
       this.page.currentPage = val
